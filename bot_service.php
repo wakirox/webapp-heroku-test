@@ -8,8 +8,10 @@ $update = file_get_contents("php://input");
 $updateArray = json_decode($update,true);
 
 $chatID = $updateArray["message"]["chat"]["id"];
+$chatMessageContent = $updateArray["message"]["text"];
+$chatMessageContentForSearch = str_replace(" ","+",$chatMessageContent);
 
-$textToSend = "Ciao";
+$textToSend = "https://www.google.it/search?q=".$chatMessageContentForSearch;
 file_get_contents($webSite."/sendmessage?chat_id=".$chatID."&text=".$textToSend);
 
 
