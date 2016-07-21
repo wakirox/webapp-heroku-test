@@ -7,9 +7,7 @@ $update = file_get_contents("php://input");
 
 $updateArray = json_decode($update,true);
 
-print_r($update);
-
-$chatID = $updateArray["result"][0]["message"]["chat"]["id"];
+$chatID = $updateArray["message"]["chat"]["id"];
 
 $textToSend = "Ciao";
 file_get_contents($webSite."/sendmessage?chat_id=".$chatID."&text=".$textToSend);
